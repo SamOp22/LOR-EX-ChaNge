@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,15 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <title>Document</title>
 </head>
+<script>
+    function t1(){
+        window.location="Student_LOR_Req.html"
+
+    }
+</script>
 <body>
     <div class="nav1">
-        <p>Letter of Recommendation System 
+        <p>Online LOR System 
             </p>
             <p id="FCRIT">Fr. Conceicao Rodrigues Institute of Technology
             </p>
@@ -20,9 +26,9 @@
         <label for="check" class="checkbtn">
             <i class="fas fa-bars" id="abc"></i>
         </label>
-        <label class="logo">LOR</label>
+        <label class="logo">Teachers Portal</label>
         <ul>
-            <li><a class="active" href="#">HOME</a></li>
+            <li><a class="active" href="TeacherResponsive.html">HOME</a></li>
             <li><a href="#">HISTORY</a></li>
             <li><a href="#">LOGOUT</a></li>
             <li><a href="#">MENU</a></li>
@@ -46,7 +52,8 @@
                 
             </thead>
             <tbody>
-                <tr>
+                <tr onclick="t1()" >
+
                     <td data-label="SR NO" class="SR">1</td>
                     <td data-label="NAME" >SAMUEL</td>
                     <td data-label="BRANCH" >COMPUTER</td>
@@ -70,10 +77,15 @@
                     <td data-label="BRANCH" >COMPUTER</td>
                     <td data-label="DATE">22/11</td>
                 </tr>
+    
             </tbody>
         </table>
     </div>
     
+    <div class="container">
+        <!-- put content here -->
+        <div class="footer"></div>
+    </div>
 </body>
  
 </html>
