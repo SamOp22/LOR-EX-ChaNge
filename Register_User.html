@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Register_User.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <div class="nav1">
+        <p>Online LOR System 
+            </p>
+            <p id="FCRIT">Fr. Conceicao Rodrigues Institute of Technology
+            </p>
+    </div>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars" id="abc"></i>
+        </label>
+        <label class="logo">Register</label>
+        <ul>
+            <li><a class="active" href="TeacherResponsive.html">HOME</a></li>
+           
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="line">
+    <hr id="FIRSTHR">
+    </div>
+
+    <div class="container">
+        <form action="">
+            <h1>Register</h1>
+            <div class="grp">
+                <label for="">Full Name:</label>
+                <input type="text" class="inputs" required id="FullName">    
+            </div>
+            <div class="grp">
+                <label for="" >Branch:</label>
+                <input type="text"  class="inputs" required id="Branch">
+            </div>
+            <div class="grp">
+                <label for="" >Roll No:</label>
+                <input type="number"  class="inputs" required id="Roll_NO">
+            </div>
+            <div class="grp">
+                <label for="" >Email:</label>
+                <input type="email"  class="inputs" required id="Email">
+            </div>
+            <div class="grp">
+                <label for="" >DOB:</label>
+                <input type="date"  class="inputs" required id="DOB">
+            </div>
+            <div class="grp">
+                <label for="" >Phone No:</label>
+                <input type="number"  class="inputs" required id="Phone No">
+            </div>
+            <div class="grp">
+                <label for="" >Year of study:</label>
+                <div class="radio">
+                    <input type="radio" id="1st year" name="year" value="1st year">
+                    <label for="html">1st Year</label><br>
+                    <input type="radio" id="2nd Year" name="year" value="2nd year">
+                    <label for="html">2nd Year</label><br>
+                    <input type="radio" id="3rd Year" name="year" value="3rd Year">
+                    <label for="html">3rd Year</label><br>
+                    <input type="radio" id="4th Year" name="year" value="4th Year">
+                    <label for="html">4th Year</label><br>
+                    
+                </div>
+            </div>
+            <div class="grp">
+                <label for="" >Username:</label>
+                <input type="text"  class="inputs" required id="Username">
+            </div>
+            <div class="grp">
+                <label for="" >Password:</label>
+                <input type="password"  class="inputs" required id="Password">
+            
+                <label for="" >Confirm Password:</label>
+                <input type="password"  class="inputs" required id="ConfPass">
+            </div>
+            <input type="submit" class="btn" value="Register">
+            
+            <div class="register">
+                <a href="login_User.html">Already a User? Login..</a>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>
