@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Mukta:wght@500&family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    
+}
+html{
+    height: 100%;
+    position: relative;
+}
+body{
+    font-family: montserrat;
+    
+}
+
+.nav1{
+    background: rgb(27, 152, 255) ;
+   
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav1 p{
+    font-size: 20px;
+    padding-top: 9px;
+    padding-left: 10px;
+   color: rgb(255, 255, 255);
+    
+}
+nav{
+    background:white;
+    height: 60px;
+    width: 100%;
+    
+    
+
+}
+
+label.logo{
+    color: rgb(0, 0, 0);
+    line-height: 70px;
+    font-size: 30px;
+    padding: 0 50px;
+    font-weight: bold;
+}
+
+nav ul{
+    float: right;
+    margin-right: 20px;
+    
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 5px;
+
+}
+
+nav ul li a{
+   
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 3px;
+}
+
+
+
+a.active,a:hover{
+    
+    transition: .5s;
+}
+
+.checkbtn{
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    float: right;
+    line-height: 60px;
+    margin-right: 35px;
+    cursor: pointer;
+}
+#check{
+    display: none;
+}
+
+#FIRSTHR{
+    width: 95%;
+    height: 2px;
+    background: rgb(27, 152, 255);
+    border: 0;  
+    
+}
+
+.container {
+    min-height: 10vh;    
+    display: flex;
+    flex-direction: column;
+    background: rgb(27, 152, 255) ;
+    margin-top: 600px;
+    
+}
+
+.stu-details{
+    font-size: 1.1rem;
+    
+}
+
+.stu-details td input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 600px;
+   
+}
+.stu-details table tr td{
+    width: 150px;
+    padding-top: 40px;
+    padding-left: 50px;
+    
+}
+.pdf{
+    padding-top: 30px;
+    padding-left: 50px;
+}
+
+.message{
+    padding-top: 30px;
+    padding-left: 50px;
+    display: flex;
+
+}
+.message input{
+    padding-top: 100px;
+    padding-left: 54px;
+}
+
+.footer {
+    
+    margin-top: auto;
+
+}
+
+
+#abc{
+    color:rgb(27, 152, 255);    
+    
+}
+.line{
+    padding-top: 10px;
+    padding-left: 5%;
+    
+}
+
+
+.table-container h1{
+    font-size: 25px;
+    padding-left: 42px;
+    padding-bottom: 30px;
+    padding-top: 12px;
+    
+}
+
+
+@media(min-width:858px){
+    .checkbtn{
+        display: none;
+    
+    }
+}
+
+@media(max-width: 952px){
+    label.logo{
+        font-size: 25px;
+        padding-left: 10px;
+    }
+    nav ul li a{
+        font-size: 15px;
+
+    }
+}
+@media(max-width:858px){
+    .checkbtn{
+        display: block;
+        
+    
+    }
+    
+    ul{
+        z-index: 100;
+        position: fixed;
+        width: 100%;
+        height: 120vh;
+        background-color: #ffffff;
+        top: 100px;
+        right: -106%;
+       padding-left: 2rem;
+        transition: all .5s;
+        
+
+    }
+    nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a{
+        font-size: 20px;
+
+    }
+    a:hover,a:active{
+        background: none;
+        color: #1b9bff  ;
+    }
+    #check:checked ~ ul{
+        right: -6%;
+    }
+    #FCRIT{
+        display: none;
+    }
+}
+
+@media(max-width:400px){
+    
+    table , table tbody , table tr ,table td {
+        display: block;
+        width: 100%;
+    }
+    
+    
+    table thead{
+        display: none;
+    }
+    table .SR{
+        background-color: #e4e4e4;
+    }
+    table td{
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        }
+    table tr{
+        margin-bottom: 10px;
+    }
+    table td::before{
+        content: attr(data-label);
+        position: absolute;
+        left:0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
