@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="student.css">
 </head>
+
 <body>
     <div class="nav1">
-        <p>Online LOR System 
-            </p>
-            <p id="FCRIT">Fr. Conceicao Rodrigues Institute of Technology
-            </p>
+        <p>Online LOR System
+        </p>
+        <p id="FCRIT">Fr. Conceicao Rodrigues Institute of Technology
+        </p>
     </div>
     <nav>
         <input type="checkbox" id="check">
@@ -28,26 +30,43 @@
         </ul>
     </nav>
     <div class="line">
-    <hr id="FIRSTHR">
+        <hr id="FIRSTHR">
     </div>
-    <div class="super-content">
-    <div class="To">
-        <textarea name="comment" placeholder="To:" id="" cols="100" rows="2  "></textarea>
-    </div>
-    <div class="parent-div">
-        <button class="btn-upload">Choose file</button>
-        <input type="file" name="upfile" />
-      </div>
-    
-    <div class="contents">
-        <textarea name="comment" placeholder="Enter your message" id="" cols="100" rows="25"></textarea>
-        
-    </div>
-</div>
+    <form action="">
+        <div class="super-content">
+            <div class="To">
+                <select id="Branch-Details">
+                    <option value="Computer">Computer</option>
+                    <option value="IT">IT</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Electrical">Electrical</option>
+
+                </select>
+                <select id="Branch-Teachers">
+                    <option value="Kavita">Kavita Shelke</option>
+
+                </select>
+            </div>
+            <div class="parent-div">
+                <button class="btn-upload">Choose file</button>
+                <input type="file" name="upfile" />
+            </div>
+
+            <div class="contents">
+                <textarea name="comment" placeholder="Enter your message" id="" cols="100" rows="25"></textarea>
+
+            </div>
+        </div>
+        <div class="Submit_button">
+            <input type="submit" id="submit" class="btn" value="Submit">
+        </div>
+
+    </form>
     <div class="container">
-        
+
         <!-- put content here -->
         <div class="footer"></div>
     </div>
 </body>
+
 </html>
