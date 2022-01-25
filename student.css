@@ -124,6 +124,7 @@ a.active,a:hover{
 
 }
 .To{
+   
     padding-top: 2vh;
     padding-left: 6vh;
 }
@@ -132,6 +133,8 @@ a.active,a:hover{
     padding-left: 6vh;
 }
 .parent-div {
+    
+    margin-left: 30rem;
     padding-left: 80rem;
     display: inline-block;
     position: relative;
@@ -152,4 +155,18 @@ a.active,a:hover{
     border-radius: 10px;
     font-size: 22px;
     font-weight: bold;
+  }
+
+  .btn{
+    margin-left:  45%;
+    margin-top: 9vh;
+    width: 120px;
+    height: 40px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background:rgb(27, 152, 255);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
   }
