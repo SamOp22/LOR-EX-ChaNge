@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login_User.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Login</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Mukta:wght@500&family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    
+}
+
+body{
+    font-family: montserrat;
+    
+}
+
+.nav1{
+    background: rgb(27, 152, 255) ;
+   
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav1 p{
+    font-size: 20px;
+    padding-top: 9px;
+    padding-left: 10px;
+   color: rgb(255, 255, 255);
+    
+}
+nav{
+    background:white;
+    height: 60px;
+    width: 100%;
+    
+    
+
+}
+
+label.logo{
+    color: rgb(0, 0, 0);
+    line-height: 70px;
+    font-size: 30px;
+    padding: 0 50px;
+    font-weight: bold;
+}
+
+nav ul{
+    float: right;
+    margin-right: 20px;
+    
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 5px;
+
+}
+
+nav ul li a{
+   
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 3px;
+}
+#check{
+    display: none;
+}
+.checkbtn{
+    display: none;
+}
+#FIRSTHR{
+    width: 95%;
+    height: 2px;
+    background: rgb(27, 152, 255);
+    border: 0;  
+    margin-left: 30px;
+    
+}
+
+body{
+    min-height: 100vh;
+    background: white ;
+
+}
+.container{
+    margin: auto;
+    
+    margin-top: 20vh;
+    width:500px;
+    height: 400px;
+    
+}
+.container form{
+    padding:30px 25px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 8px 16px rgb(185, 185, 185);
+
+}
+
+.container form h1{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container form .inputs{
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgb(109, 109, 109);
+    border-radius: 9px;
+    margin: 12px 0 18px 0;
+    padding: 0 10px;
+}
+
+.container form .btn{
+    margin-left: 18%;
+    margin-top: 1.5vh;
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background:rgb(27, 152, 255);
+    color: rgb(255, 255, 255);
+}
+
+#passs{
+    width: 120px;
+    border: 1px solid rgb(148, 148, 148);
+}
+.register{
+    text-align: center;
+    margin-top: 3vh;
+}
+</style>
+<body>
+    <div class="nav1">
+        <p>Online LOR System 
+            </p>
+            <p id="FCRIT">Fr. Conceicao Rodrigues Institute of Technology
+            </p>
+    </div>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars" id="abc"></i>
+        </label>
+        <label class="logo">LOGIN</label>
+        <ul>
+            <li><a class="active" href="TeacherResponsive.html">HOME</a></li>
+           
+            <li><a href="/aboutus">AboutUs</a></li>
+        </ul>
+    </nav>
+    <div class="line">
+    <hr id="FIRSTHR">
+    </div>
+
+    <div class="container">
+        <form action="/login" method="post">
+            <h1>Login</h1>
+            <div class="grp">
+                <label for="">Username</label>
+                <input type="text" class="inputs" name="username" required id="Username">
+            </div>
+            <div class="grp">
+                <label for="">Password</label>
+                <input type="password" class="inputs" name="password" required id="Pass">
+            </div>
+            <input type="submit" class="btn" value="Login">
+            <input type="submit" class="btn" id="passs" value="Forgot Password">
+            <div class="register">
+                <a href="/register">New user? Register..</a>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>

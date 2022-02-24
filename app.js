@@ -18,17 +18,17 @@ mongoose.connect("mongodb://localhost:27017/trying", {
 })
 
 // const templatepath=path.join(__dirname,'../views');
-var studentSchema= new mongoose.Schema({
+var studentSchema = new mongoose.Schema({
     // toteacher: {
     //     type: String,
     //     required:true,
     // },
-    message : {
-        type:String,
-        required:true,
+    message: {
+        type: String,
+        required: true,
     }
 })
-var dropboxSchema= new mongoose.Schema({
+var dropboxSchema = new mongoose.Schema({
     branch: {
         type: String,
         required: true,
@@ -38,10 +38,10 @@ var dropboxSchema= new mongoose.Schema({
         required: true,
     }
 })
-var teacherSchema= new mongoose.Schema({
+var teacherSchema = new mongoose.Schema({
     Name: {
         type: String,
-        required:true,
+        required: true,
     },
     dob: {
         type: Date,
@@ -106,41 +106,41 @@ var detailSchema = new mongoose.Schema({
         required: true,
     },
     message: {
-        type :String,
+        type: String,
         required: false,
     }
 })
 const Detail = mongoose.model('Detail', detailSchema);
-const Studetail=mongoose.model('Studetail',studentSchema);
-const Teachdetail=mongoose.model('Teachdetail',teacherSchema);
-const Dropdetail=mongoose.model('Dropdetail',dropboxSchema);
+const Studetail = mongoose.model('Studetail', studentSchema);
+const Teachdetail = mongoose.model('Teachdetail', teacherSchema);
+const Dropdetail = mongoose.model('Dropdetail', dropboxSchema);
 const port = 3000;
-app.set("view-engine","egs");
-app.set("views",path.join(__dirname,"views"))
-app.get("/" , (req,res)=>{
-    res.sendFile(__dirname+'/home.html');
+app.set("view-engine", "egs");
+app.set("views", path.join(__dirname, "views"))
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + '/home.html');
 })
-app.get("/dropdata", (req,res)=>{
+app.get("/dropdata", (req, res) => {
     res.sendFile(__dirname + '/dropdata.html');
 })
-app.post("/dropdata", (req,res)=>{
+app.post("/dropdata", (req, res) => {
     var myDropdata = new Dropdetail({
         teacher: req.body.teacher,
         branch: req.body.branch,
     });
     myDropdata.save()
-    .then( ()=>{
-        res.send("drop data saved!");
-    })
-    .catch( (err)=>{
-        res.send("errrr");
-    })
+        .then(() => {
+            res.send("drop data saved!");
+        })
+        .catch((err) => {
+            res.send("errrr");
+        })
 })
-app.get("/history", (req,res)=>{
-    res.sendFile(__dirname+'/history.html');
+app.get("/history", (req, res) => {
+    res.sendFile(__dirname + '/history.html');
 })
-app.get("/teacher", (req,res)=>{
-    res.sendFile(__dirname+'/teacher.html');
+app.get("/teacher", (req, res) => {
+    res.sendFile(__dirname + '/teacher.html');
 })
 app.get("/register", (req, res) => {
     res.sendFile(__dirname + '/register.html');
@@ -176,8 +176,8 @@ app.post("/register", (req, res) => {
             res.send("error");
         })
 })
-app.get("/registerteacher", (req,res)=>{
-    res.sendFile(__dirname+'/registerteacher.html');
+app.get("/registerteacher", (req, res) => {
+    res.sendFile(__dirname + '/registerteacher.html');
 })
 app.post("/registerteacher", (req, res) => {
     const p = req.body.password;
@@ -200,52 +200,68 @@ app.post("/registerteacher", (req, res) => {
             res.send("error");
         })
 })
-app.post('/login',(req, res) => {
-   
-        const currusername = req.body.username;
-        const currpassword = req.body.password;
-        const useris = Detail.findOne({ username:currusername })
-        .then( (data)=>{
-            if(data.password===currpassword){
-                res.render('student.ejs',{
-                    student1:data.Name,
+// Dropdetail.find({}, { branch: 1 })
+//     .then((dataaa) => {
+//         console.log(dataaa)
+//     })
+app.post('/login', (req, res) => {
+    const currusername = req.body.username;
+    const currpassword = req.body.password;
+    const useris = Detail.findOne({ username: currusername })
+        .then((data) => {
+            // let d1=[], d2=[];
+
+            if (data.password === currpassword) {
+                // Dropdetail.find({}, { branch: 1, _id: 0 })
+                //     .then((dataaa) => {
+                //         d1 = dataaa
+                //     })
+                // console.log(d1)
+                // Dropdetail.find({branch:1}, { teacher: 1 })
+                //     .then((dataaa) => {
+                //         d2 = dataaa
+                //     })
+                res.render('student.ejs', {
+                    student1: data.Name,
+                    // drop1: d1,
+                    // drop2: d2,
                 });
-                app.post('/student' , (req,res)=>{
+                app.post('/student', (req, res) => {
                     // console.log(data.username)
                     // console.log(req.body.message)
-                    Detail.updateOne({username:data.username},
-                        { message:req.body.message}
-                        )
-                    .then( ()=>{
-                        res.send("savedd!")
-                    })
-                    .catch( ()=>{
-                        res.send("error")
-                    })
+                    Detail.updateOne({ username: data.username },
+                        { message: req.body.message }
+                    )
+                        .then(() => {
+                            res.send("savedd!")
+                        })
+                        .catch(() => {
+                            res.send("error")
+                        })
                 })
             }
-            else{
+            else {
                 res.send("invalid details");
             }
         })
-        .catch( (err)=>{
-            const teacheris=Teachdetail.findOne({username:currusername})
-            .then( (dataT)=>{
-                if(dataT.password==currpassword){
-                    res.render('teacher.ejs',{
-                        teacher1: dataT.Name,
-                    });
-                }
-                else{
-                    res.send("invalid details!");
-                }
-            })
-            .catch( (err)=>{
-                res.send("invalid details");
-            })
+        .catch((err) => {
+            const teacheris = Teachdetail.findOne({ username: currusername })
+                .then((dataT) => {
+                    if (dataT.password == currpassword) {
+                        res.render('teacher.ejs', {
+                            teacher1: dataT.Name,
+                        });
+                    }
+                    else {
+                        res.send("invalid details!");
+                    }
+                })
+                .catch((err) => {
+                    res.send("invalid details");
+                })
         })
-        // res.status(400).send("error");
-    
+    // res.status(400).send("error");
+
 })
 // app.get('/student', (req,res)=>{
 //     res.sendFile(__dirname + '/student.html');
@@ -255,32 +271,32 @@ app.post('/login',(req, res) => {
 //     console.log(req.body.message)
 // })
 
-app.get('/student_req', (req,res)=>{
-    const check1=Detail.findOne({Name:"pratham"})
-    .then((data)=>{
-        const check2=Studetail.findOne({message:"hello mam this is pratham shah from comp b"})
-        .then( (data2)=>{
-            res.render('student_req.ejs',{
-                name1:data.Name,
-                dept1:data.branch,
-                year1:data.year,
-                roll1:data.rollno,
-                message1: data2.message
-            });
+app.get('/student_req', (req, res) => {
+    const check1 = Detail.findOne({ Name: "pratham" })
+        .then((data) => {
+            const check2 = Studetail.findOne({ message: "hello mam this is pratham shah from comp b" })
+                .then((data2) => {
+                    res.render('student_req.ejs', {
+                        name1: data.Name,
+                        dept1: data.branch,
+                        year1: data.year,
+                        roll1: data.rollno,
+                        message1: data2.message
+                    });
+                })
+                .catch(() => {
+                    res.send("error");
+                })
         })
-        .catch(()=>{
-            res.send("error");
+        .catch((err) => {
+            console.log(err);
         })
-    })
-    .catch((err)=>{
-        console.log(err);
-    })
     // const check2=Studetail.findOne({message:"i am"})
     // console.log(check1.rollno);
 })
 
-app.get('/aboutus', (req,res)=>{
-    res.sendFile(__dirname+'/aboutus.html')
+app.get('/aboutus', (req, res) => {
+    res.sendFile(__dirname + '/aboutus.html')
 })
 app.listen(port, () => {
     // console.log(`website is running at port : ${port}`);

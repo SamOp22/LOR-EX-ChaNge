@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="register.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Mukta:wght@500&family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    
+}
+
+body{
+    font-family: montserrat;
+    
+}
+
+.nav1{
+    background: rgb(27, 152, 255) ;
+   
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav1 p{
+    font-size: 20px;
+    padding-top: 9px;
+    padding-left: 10px;
+   color: rgb(255, 255, 255);
+    
+}
+nav{
+    background:white;
+    height: 60px;
+    width: 100%;
+    
+    
+
+}
+
+label.logo{
+    color: rgb(0, 0, 0);
+    line-height: 70px;
+    font-size: 30px;
+    padding: 0 50px;
+    font-weight: bold;
+}
+
+nav ul{
+    float: right;
+    margin-right: 20px;
+    
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 5px;
+
+}
+
+nav ul li a{
+   
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 3px;
+}
+#check{
+    display: none;
+}
+.checkbtn{
+    display: none;
+}
+#FIRSTHR{
+    width: 95%;
+    height: 2px;
+    background: rgb(27, 152, 255);
+    border: 0;  
+    margin-left: 30px;
+    
+}
+
+body{
+    min-height: 100vh;
+    background: white ;
+
+}
+.container{
+    margin: auto;
+    
+    margin-top: 5vh;
+    width:700px;
+    height: 950px;
+    
+}
+.container form{
+    padding:30px 25px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 8px 16px rgb(185, 185, 185);
+
+}
+
+.container form h1{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container form .inputs{
+    width:100%;
+    height: 40px;
+    border: 1px solid rgb(109, 109, 109);
+    border-radius: 9px;
+    margin: 12px 0 18px 0;
+    padding: 0 10px;
+}
+
+.container form .btn{
+    margin-left:  45%;
+    margin-top: 1.5vh;
+    width: 120px;
+    height: 40px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background:rgb(27, 152, 255);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+}
+
+#passs{
+    width: 120px;
+    border: 1px solid rgb(148, 148, 148);
+}
+.register{
+    text-align: center;
+    margin-top: 3vh;
+}
+.radio{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    display: flex;
+    justify-content: space-between;
+}
+#Password{
+    width: 30%;
+}
+#ConfPass{
+    width: 30%;
+}
+#Username{
+    width: 50%;
+}
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Register</title>
+</head>
+<body>
+    <div class="nav1">
+        <p>Online LOR System 
+            </p>
+            <p id="FCRIT">Fr. Conceicao Rodrigues Institute of Technology
+            </p>
+    </div>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars" id="abc"></i>
+        </label>
+        <label class="logo">Register</label>
+        <ul>
+            <li><a class="active" href="TeacherResponsive.html">HOME</a></li>
+           
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="line">
+    <hr id="FIRSTHR">
+    </div>
+
+    <div class="container">
+        <form action="/register" method="post">
+            <h1>Register</h1>
+            <div class="grp">
+                <label for="">Full Name:</label>
+                <input type="text" name="Name" class="inputs" required id="FullName">    
+            </div>
+            <div class="grp">
+                <label for="" >Branch:</label>
+                <input type="text"  name="branch" class="inputs" required id="Branch">
+            </div>
+            <div class="grp">
+                <label for="" >Roll No:</label>
+                <input type="number" name="rollno" class="inputs" required id="Roll_NO">
+            </div>
+            <div class="grp">
+                <label for="" >Email:</label>
+                <input type="email"  name="email" class="inputs" required id="Email">
+            </div>
+            <div class="grp">
+                <label for="" >DOB:</label>
+                <input type="date"  name="dob" class="inputs" required id="DOB">
+            </div>
+            <div class="grp">
+                <label for="" >Phone No:</label>
+                <input type="number" name="phone" class="inputs" required id="Phone No">
+            </div>
+            <div class="grp">
+                <label for="" >Year of study:</label>
+                <div class="radio">
+                    <input type="radio" id="1st year" name="year" value="1st year">
+                    <label for="html">1st Year</label><br>
+                    <input type="radio" id="2nd Year" name="year" value="2nd year">
+                    <label for="html">2nd Year</label><br>
+                    <input type="radio" id="3rd Year" name="year" value="3rd Year">
+                    <label for="html">3rd Year</label><br>
+                    <input type="radio" id="4th Year" name="year" value="4th Year">
+                    <label for="html">4th Year</label><br>
+                    
+                </div>
+            </div>
+            <div class="grp">
+                <label for="" >Username:</label>
+                <input type="text"  name="username" class="inputs" required id="Username">
+            </div>
+            <div class="grp">
+                <label for="" >Password:</label>
+                <input type="password"  name="password" class="inputs" required id="Password">
+            
+                <label for="" >Confirm Password:</label>
+                <input type="password"  name="cpassword" class="inputs" required id="ConfPass">
+            </div>
+            
+            <div class="register">
+                <a href="/login">Already a User? Login..</a>
+            </div>
+            <input type="submit" class="btn" value="Register">
+        </form>
+    </div>
+</body>
+</html>
