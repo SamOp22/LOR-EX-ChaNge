@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Mukta:wght@500&family=Roboto&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+
+    }
+
+    html {
+        height: 100%;
+        position: relative;
+    }
+
+    body {
+        font-family: montserrat;
+
+    }
+
+    .nav1 {
+        background: rgb(27, 152, 255);
+
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav1 p {
+        font-size: 20px;
+        padding-top: 9px;
+        padding-left: 10px;
+        color: rgb(255, 255, 255);
+
+    }
+
+    nav {
+        background: white;
+        height: 60px;
+        width: 100%;
+
+
+
+    }
+
+    label.logo {
+        color: rgb(0, 0, 0);
+        line-height: 70px;
+        font-size: 30px;
+        padding: 0 50px;
+        font-weight: bold;
+    }
+
+    nav ul {
+        float: right;
+        margin-right: 20px;
+
+    }
+
+    nav ul li {
+        display: inline-block;
+        line-height: 60px;
+        margin: 0 5px;
+
+    }
+
+    nav ul li a {
+
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+        text-transform: uppercase;
+        padding: 8px 14px;
+        border-radius: 3px;
+    }
+
+
+
+    a.active,
+    a:hover {
+
+        transition: .5s;
+    }
+
+    .checkbtn {
+        font-size: 30px;
+        color: rgb(0, 0, 0);
+        float: right;
+        line-height: 60px;
+        margin-right: 35px;
+        cursor: pointer;
+    }
+
+    #check {
+        display: none;
+    }
+
+    #FIRSTHR {
+        width: 95%;
+        height: 2px;
+        background: rgb(27, 152, 255);
+        border: 0;
+
+    }
+
+    .container {
+        min-height: 10vh;
+        display: flex;
+        flex-direction: column;
+        background: rgb(27, 152, 255);
+        margin-top: 700px;
+
+    }
+
+    .footer {
+
+        margin-top: auto;
+
+    }
+
+
+    #abc {
+        color: rgb(27, 152, 255);
+
+    }
+
+    .line {
+        padding-top: 10px;
+        padding-left: 5%;
+
+    }
+
+    .To {
+
+        padding-top: 2vh;
+        padding-left: 6vh;
+    }
+
+    .contents {
+        padding-top: 0;
+        padding-left: 6vh;
+    }
+
+    .parent-div {
+
+        margin-left: 30rem;
+        padding-left: 80rem;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .parent-div input[type=file] {
+        left: 0;
+        top: 0;
+        opacity: 0;
+        position: absolute;
+        font-size: 90px;
+    }
+
+    .btn-upload {
+        background-color: rgb(27, 152, 255);
+        border: 3px solid rgb(27, 152, 255);
+        color: rgb(255, 255, 255);
+        padding: 10px 25px;
+        border-radius: 10px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .btn {
+        margin-left: 45%;
+        margin-top: 9vh;
+        width: 120px;
+        height: 40px;
+        border-radius: 3px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background: rgb(27, 152, 255);
+        color: rgb(255, 255, 255);
+        font-size: 18px;
+    }
+</style>
+
+
+
+
+<body>
+    <div class="nav1">
+        <p>Online LOR System
+        </p>
+        <p id="FCRIT">Fr. Conceicao Rodrigues Institute of Technology
+        </p>
+    </div>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars" id="abc"></i>
+        </label>
+        <label class="logo">Student Portal</label>
+        <ul>
+            <li><a class="active" href="/">HOME</a></li>
+            <li><a href="/history">HISTORY</a></li>
+            <li><a href="/">
+                    <%=student1%>
+                </a></li>
+            <li><a href="#">MENU</a></li>
+        </ul>
+    </nav>
+    <div class="line">
+        <hr id="FIRSTHR">
+    </div>
+    <form action="/student" method="post">
+        <div class="super-content">
+            <div class="To">
+                <select id="Branch-Details">
+
+                    <option value="Computer">Computer</option>
+                    <option value="IT">IT</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Electrical">Electrical</option>
+
+                </select>
+
+
+                </select>
+            </div>
+            <div class="parent-div">
+                <button class="btn-upload">Choose file</button>
+                <input type="file" name="upfile" />
+            </div>
+
+            <div class="contents">
+                <textarea name="message" placeholder="Enter your message" id="" cols="100" rows="25"></textarea>
+
+            </div>
+        </div>
+        <div class="Submit_button">
+            <input type="submit" id="submit" class="btn" value="Submit">
+        </div>
+
+    </form>
+    <div class="container">
+
+        <!-- put content here -->
+        <div class="footer"></div>
+    </div>
+</body>
+
+</html>
