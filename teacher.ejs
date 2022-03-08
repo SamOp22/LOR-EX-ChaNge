@@ -293,43 +293,22 @@ table th{
         <h1>Student LOR Requests</h1>
         <table>
             <thead>
-                
+                <tr>    
                     <th>SR NO</th>
                     <th>NAME</th>
                     <th>BRANCH</th>
-                    <th>DATE</th>
-                    
-               
-                
-            </thead>
-            <tbody>
-                <tr  >
-
-                    <td data-label="SR NO" class="SR">1</td>
-                    <td> <a href="/student_req">Pratham</a></td>
-                    <td data-label="BRANCH" >COMPUTER</td>
-                    <td data-label="DATE" >22/11</td>
-                </tr>
+                    <th>DATE</th>  
+                </tr>   
+            </thead>       
+            <% records.forEach(function(stu) {%>
                 <tr>
-                    <td data-label="SR NO" class="SR">2</td>
-                    <td data-label="NAME" >SAMUEL</td>
-                    <td data-label="BRANCH" >COMPUTER</td>
-                    <td data-label="DATE" >22/11</td>
-                </tr>
-                <tr>
-                    <td data-label="SR NO" class="SR">3</td>
-                    <td data-label="NAME" >Karthik</td>
-                    <td data-label="BRANCH" >COMPUTER</td>
-                    <td data-label="DATE" >22/11</td>
-                </tr>
-                <tr>
-                    <td data-label="SR NO" class="SR">4</td>
-                    <td data-label="NAME" >Archit</td>
-                    <td data-label="BRANCH" >COMPUTER</td>
-                    <td data-label="DATE">22/11</td>
+                    <td>1</td>
+                    <td> <a href="/student_req"><%= stu.Name %></a></td>
+                    <td><%= stu.branch %></td>
+                    <td>22/11</td>
                 </tr>
     
-            </tbody>
+            <% }) %>
         </table>
     </div>
     

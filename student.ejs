@@ -226,21 +226,25 @@
     <form action="/student" method="post">
         <div class="super-content">
             <div class="To">
-                <select id="Branch-Details">
-
+                <select id="Branch-Details" name="branch">
+                
                     <option value="Computer">Computer</option>
                     <option value="IT">IT</option>
                     <option value="Mechanical">Mechanical</option>
                     <option value="Electrical">Electrical</option>
-
+                
                 </select>
-
-
+                <select id="T-Details" name="teacher">
+                
+                    <option value="Kavita Shelke">Kavita Shelke</option>
+                    <option value="Snehal Nikalje">Snehal Nikalje</option>
+                    <option value="Abhijeet Pasi">Abhijeet Pasi</option>
+                    <option value="Dakshayini G">Dakshayini G</option>
+                
                 </select>
             </div>
-            <div class="parent-div">
-                <button class="btn-upload">Choose file</button>
-                <input type="file" name="upfile" />
+            <div>
+
             </div>
 
             <div class="contents">
@@ -253,6 +257,11 @@
         </div>
 
     </form>
+    <div class="messageeeeee">
+
+        <form  method="post" action="/student"></form>
+        <input type="File" name="messagee">
+    </div>
     <div class="container">
 
         <!-- put content here -->
