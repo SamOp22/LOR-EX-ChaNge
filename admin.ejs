@@ -286,12 +286,7 @@
         }
     }
 </style>
-<script>
-    // function t1(){
-    //     window.location="Student_LOR_Req.html"
 
-    // }
-</script>
 
 <body>
     <div class="nav1">
@@ -305,12 +300,11 @@
         <label for="check" class="checkbtn">
             <i class="fas fa-bars" id="abc"></i>
         </label>
-        <label class="logo">Teachers Portal</label>
+        <label class="logo">Admin Portal</label>
         <ul>
             <li><a class="active" href="/">HOME</a></li>
-            <li><a href="/history">HISTORY</a></li>
             <li><a href="/">
-                    <%=teacher1 %>
+                    <%=admin1 %>
                 </a></li>
             <li><a href="#">MENU</a></li>
         </ul>
@@ -327,35 +321,31 @@
                     <th>SR NO</th>
                     <th>NAME</th>
                     <th>BRANCH</th>
-                    <th>ROLL NO</th>
+                    <th>TEACHER</th>
                     <th>DATE</th>
-                    <th>message</th>
                 </tr>
             </thead>
             <tbody>
-                <% records.forEach(function(stu,index) {%>
-                    <tr>
-                        <td>
-                            <%= index + 1 %>
-                        </td >
-                        <td id="getting" name="stu">
-                           <a href="/student_req"> <%= stu.Name %> </a>
-                        </td>
-                        <td>
-                            <%= stu.branch %>
-                        </td>
-                        <td>
-                            <%= stu.rollno %>
-                        </td>
-                        <td>
-                            <%= stu.date + "/" + (++stu.month) + "/" + stu.dateyear %>
-                        </td>
-                        <td >
-                            <%= stu.message %>
-                        </td>
-                    </tr>
+            <% records.forEach(function(stu,index) {%>
+                <tr>
+                    <td>
+                        <%= index + 1 %>
+                    </td>
+                    <td>
+                        <%= stu.Name %></a>
+                    </td>
+                    <td>
+                        <%= stu.branch %>
+                    </td>
+                    <td>
+                        <%= stu.teacher %>
+                    </td>
+                    <td>
+                        <%= stu.date + "/" + (++stu.month) + "/" + stu.dateyear %>
+                    </td>
+                </tr>
 
-                    <% }) %>
+                <% }) %>
             </tbody>
         </table>
     </div>
@@ -366,59 +356,54 @@
     </div>
 </body>
 <script>
-   
     th = document.getElementsByTagName('th');
     console.log(th)
-    for (let c = 0; c < th.length; c++) {
+    for(let c=0; c < th.length; c++){
         console.log("work")
-        th[c].addEventListener('click', item(c))
+        th[c].addEventListener('click',item(c))
     }
-    function item(c) {
-
-        return function () {
-            console.log(c)
-            sortTable(c)
-        }
-    }
-
-
-    function sortTable(c) {
-        var table, rows, switching, i, x, y, shouldSwitch;
-        table = document.getElementById("myTable");
-        switching = true;
-        /*Make a loop that will continue until
-        no switching has been done:*/
-        while (switching) {
-            //start by saying: no switching is done:
-            switching = false;
-            rows = table.rows;
-            /*Loop through all table rows (except the
-            first, which contains table headers):*/
-            for (i = 1; i < (rows.length - 1); i++) {
-                //start by saying there should be no switching:
-                shouldSwitch = false;
-                /*Get the two elements you want to compare,
-                one from current row and one from the next:*/
-                x = rows[i].getElementsByTagName("TD")[c];
-                y = rows[i + 1].getElementsByTagName("TD")[c];
-                //check if the two rows should switch place:
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
-                    shouldSwitch = true;
-                    break;
-                }
-            }
-            if (shouldSwitch) {
-                /*If a switch has been marked, make the switch
-                and mark that a switch has been done:*/
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-            }
+    function item(c){
+    
+        return function(){
+          console.log(c)
+          sortTable(c)
         }
     }
     
-</script>
-<!-- <script src="C:\Users\91702\Desktop\Development\webdev\site\views\app2.js"></script>  -->
-
-
+    
+    function sortTable(c) {
+      var table, rows, switching, i, x, y, shouldSwitch;
+      table = document.getElementById("myTable");
+      switching = true;
+      /*Make a loop that will continue until
+      no switching has been done:*/
+      while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+          //start by saying there should be no switching:
+          shouldSwitch = false;
+          /*Get the two elements you want to compare,
+          one from current row and one from the next:*/
+          x = rows[i].getElementsByTagName("TD")[c];
+          y = rows[i + 1].getElementsByTagName("TD")[c];
+          //check if the two rows should switch place:
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          /*If a switch has been marked, make the switch
+          and mark that a switch has been done:*/
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
+      }
+    }
+    </script>
 </html>
