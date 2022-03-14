@@ -17,10 +17,12 @@ mongoose.connect("mongodb://localhost:27017/trying", {
 }).catch((error) => {
     console.log(error);
 })
-
-// const templatepath=path.join(__dirname,'../views');
-var studentSchema = new mongoose.Schema({
+var sturecieveSchema = new mongoose.Schema({
     Name: {
+        type: String,
+        required: true,
+    },
+    rollno: {
         type: String,
         required:true,
     },
@@ -30,23 +32,62 @@ var studentSchema = new mongoose.Schema({
     },
     teacher: {
         type: String,
-        required:true,
+        required: true,
+    },
+    date: {
+        type: String,
+        required: true,
+    },
+    month: {
+        type: String,
+        required: true,
+    },
+    dateyear: {
+        type: String,
+        required: true,
+    }
+})
+// const templatepath=path.join(__dirname,'../views');
+var studentSchema = new mongoose.Schema({
+    Name: {
+        type: String,
+        required: true,
+    },
+    message: {
+        type: String,
+        required: true,
+    },
+    teacher: {
+        type: String,
+        required: true,
     },
     branch: {
         type: String,
-        required:true,
+        required: true,
     },
     rollno: {
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
     year: {
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
     messagee: {
-        type:String,
-        required:false,
+        type: String,
+        required: false,
+    },
+    date: {
+        type: String,
+        required: true,
+    },
+    month: {
+        type: String,
+        required: true,
+    },
+    dateyear: {
+        type: String,
+        required: true,
     }
 })
 var dropboxSchema = new mongoose.Schema({
@@ -61,6 +102,40 @@ var dropboxSchema = new mongoose.Schema({
 })
 var teacherSchema = new mongoose.Schema({
     Name: {
+        type: String,
+        required: true,
+    },
+    dob: {
+        type: Date,
+        required: true,
+    },
+    phone: {
+        type: String,
+        required: true,
+    },
+    username: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    cpassword: {
+        type: String,
+        required: true,
+    }
+})
+var adminSchema = new mongoose.Schema({
+    Name: {
+        type: String,
+        required: true,
+    },
+    branch: {
+        type: String,
+        required: true,
+    },
+    email: {
         type: String,
         required: true,
     },
@@ -135,6 +210,8 @@ const Detail = mongoose.model('Detail', detailSchema);
 const Studetail = mongoose.model('Studetail', studentSchema);
 const Teachdetail = mongoose.model('Teachdetail', teacherSchema);
 const Dropdetail = mongoose.model('Dropdetail', dropboxSchema);
+const Admindetail = mongoose.model('Admindetail', adminSchema);
+const Sturecievedetail = mongoose.model('sturecievedetail', sturecieveSchema);
 const port = 3000;
 app.set("view-engine", "egs");
 app.set("views", path.join(__dirname, "views"))
@@ -143,6 +220,34 @@ app.get("/", (req, res) => {
 })
 app.get("/dropdata", (req, res) => {
     res.sendFile(__dirname + '/dropdata.html');
+})
+app.get("/registeradmin", (req, res) => {
+    res.sendFile(__dirname + '/registeradmin.html');
+})
+app.post("/registeradmin", (req, res) => {
+    const p = req.body.password;
+    const cp = req.body.cpassword;
+    if (p === cp) {
+        var myData = new Admindetail({
+            Name: req.body.Name,
+            branch: req.body.branch,
+            email: req.body.email,
+            dob: req.body.dob,
+            phone: req.body.phone,
+            username: req.body.username,
+            password: p,
+            cpassword: cp,
+        })
+
+    }
+    // myData.Name=req.body.Name
+    myData.save()
+        .then(() => {
+            res.send("Registered Successfully!");
+        })
+        .catch((error) => {
+            res.send("error");
+        })
 })
 app.post("/dropdata", (req, res) => {
     var myDropdata = new Dropdetail({
@@ -160,9 +265,9 @@ app.post("/dropdata", (req, res) => {
 app.get("/history", (req, res) => {
     res.sendFile(__dirname + '/history.html');
 })
-app.get("/teacher", (req, res) => {
-    res.sendFile(__dirname + '/teacher.html');
-})
+// app.get("/teacher", (req, res) => {
+//     res.sendFile(__dirname + '/teacher.html');
+// })
 app.get("/register", (req, res) => {
     res.sendFile(__dirname + '/register.html');
 });
@@ -230,41 +335,59 @@ app.post('/login', (req, res) => {
     const currpassword = req.body.password;
     const useris = Detail.findOne({ username: currusername })
         .then((data) => {
-            // let d1=[], d2=[];
-
             if (data.password === currpassword) {
-                // Dropdetail.find({}, { branch: 1, _id: 0 })
-                //     .then((dataaa) => {
-                //         d1 = dataaa
-                //     })
-                // console.log(d1)
-                // Dropdetail.find({branch:1}, { teacher: 1 })
-                //     .then((dataaa) => {
-                //         d2 = dataaa
-                //     })
+                var sturoll=data.rollno;
+                console.log(sturoll)
                 res.render('student.ejs', {
                     student1: data.Name,
-                    // drop1: d1,
-                    // drop2: d2,
                 });
+                
+                app.get('/historystu', (req,res)=> {
+                    console.log(sturoll)
+                    Studetail.find({rollno:sturoll})
+                    .then( (detailofstu)=> {
+                        res.render('historystu.ejs', {
+                            recieved : detailofstu,
+                            student2:data.Name,
+                        })
+                    })
+                    .catch ( ()=> {
+                        res.send("no detail to display")
+                    })
+                })
                 app.post('/student', (req, res) => {
-                    // console.log(data.username)
-                    // console.log(req.body.message)
+                    var d = new Date();
                     var myDataa = new Studetail({
-                        Name:data.Name,
-                        rollno:data.rollno,
-                        year:data.year,
-                        message:req.body.message,
-                        branch:req.body.branch,
-                        teacher:req.body.teacher,
-                        messagee:req.body.messagee
+                        Name: data.Name,
+                        rollno: data.rollno,
+                        year: data.year,
+                        message: req.body.message,
+                        branch: req.body.branch,
+                        teacher: req.body.teacher,
+                        messagee: req.body.messagee,
+                        date: d.getDate(),
+                        dateyear: d.getFullYear(),
+                        month: d.getMonth()
                     });
                     myDataa.save()
-                    .then( ()=>{
-                        res.send("message saved!");
+                        .then(() => {
+                            res.send("message saved!");
+                        })
+                        .catch(() => {
+                            res.send("error!");
+                        })
+                })
+                app.get('/menu',(req,res)=> {
+                    Sturecievedetail.find({rollno : data.rollno})
+                    .then( (lor)=> {
+                        console.log(lor)
+                        res.render('menu.ejs', {
+                            recieved : lor,
+                            student1: data.Name
+                        })
                     })
                     .catch( ()=>{
-                        res.send("error!");
+                        res.send("No LOR to display");
                     })
                 })
             }
@@ -276,52 +399,68 @@ app.post('/login', (req, res) => {
             const teacheris = Teachdetail.findOne({ username: currusername })
                 .then((dataT) => {
                     if (dataT.password == currpassword) {
-                        Studetail.find({teacher : dataT.Name})
-                        .then((datastu)=>{
-                            res.render('teacher.ejs', {
-                                teacher1: dataT.Name,
-                                records: datastu,
-                            }); 
-                            app.get('/student_req', (req, res) => {
-                                // const check1 = Detail.findOne({ Name: "pratham" })
-                                //     .then((data) => {
-                                        Studetail.findOne({ teacher: dataT.Name })
-                                            .then((data2) => {
-                                                res.render('student_req.ejs', {
-                                                    name1: data2.Name,
-                                                    dept1: data2.branch,
-                                                    year1: data2.year,
-                                                    roll1: data2.rollno,
-                                                    message1: data2.message
-                                                });
-                                            })
-                                            .catch(() => {
-                                                res.send("error");
-                                            })
-                                    // })
-                                    .catch((err) => {
-                                        console.log(err);
-                                    })
-                                // const check2=Studetail.findOne({message:"i am"})
-                                // console.log(check1.rollno);
+                        Studetail.find({ teacher: dataT.Name })
+                            .then((datastu) => {
+                                res.render('teacher.ejs', {
+                                    teacher1: dataT.Name,
+                                    records: datastu,
+                                });
+                                app.get('/student_req', (req, res) => {
+                                    res.render('student_req.ejs', {
+                                        teacher1: dataT.Name,
+                                        records: datastu,
+                                    });
+                                })
+                                var d = new Date();
+                                app.post('/student_req', (req, res) => {
+                                    var myDataaT = new Sturecievedetail({
+                                        Name: req.body.Name,
+                                        rollno:req.body.rollno,
+                                        message: req.body.messageteacher,
+                                        teacher: dataT.Name,
+                                        date: d.getDate(),
+                                        dateyear: d.getFullYear(),
+                                        month: d.getMonth()
+                                    });
+                                    myDataaT.save()
+                                        .then(() => {
+                                            res.send("message saved!");
+                                        })
+                                        .catch(() => {
+                                            res.send("error!");
+                                        })
+                                })
                             })
-                        })
-                        .catch(()=>{
-                            res.send("no record to display")
-                        })
-                        
                     }
-                    else {
-                        res.send("invalid details!");
+                    else{
+                        res.send("invalid details");
                     }
                 })
-                .catch((err) => {
-                    res.send("invalid details");
+                .catch(() => {
+                    const adminis = Admindetail.findOne({ username: currusername })
+                        .then((dataA) => {
+                            if (dataA.password == currpassword) {
+                                Studetail.find({ branch: dataA.branch })
+                                    .then((datarec) => {
+                                        res.render('admin.ejs', {
+                                            admin1: adminis.Name,
+                                            records: datarec
+                                        })
+                                    })
+                            }
+                            else {
+                                res.send("invalid details");
+                            }
+                        })
+                        .catch(() => {
+                            res.send("invalid details");
+                        })
                 })
+
         })
-    // res.status(400).send("error");
 
 })
+
 // app.get('/student', (req,res)=>{
 //     res.sendFile(__dirname + '/student.html');
 // })
@@ -360,3 +499,4 @@ app.get('/aboutus', (req, res) => {
 app.listen(port, () => {
     // console.log(`website is running at port : ${port}`);
 });
+// module.export =Studetail;

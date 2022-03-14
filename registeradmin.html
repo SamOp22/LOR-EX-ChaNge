@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login_User.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <title>Login</title>
-</head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Mukta:wght@500&family=Roboto&display=swap');
+    <!-- <link rel="stylesheet" href="register.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Mukta:wght@500&family=Roboto&display=swap');
 
 *{
     margin: 0;
@@ -101,16 +98,16 @@ body{
 .container{
     margin: auto;
     
-    margin-top: 20vh;
-    width:500px;
-    height: 400px;
+    margin-top: 5vh;
+    width:700px;
+    height: 950px;
     
 }
 .container form{
     padding:30px 25px;
     width: 100%;
     height: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     background: rgb(255, 255, 255);
     box-shadow: 0 8px 16px rgb(185, 185, 185);
 
@@ -122,7 +119,7 @@ body{
 }
 
 .container form .inputs{
-    width: 100%;
+    width:100%;
     height: 40px;
     border: 1px solid rgb(109, 109, 109);
     border-radius: 9px;
@@ -131,16 +128,17 @@ body{
 }
 
 .container form .btn{
-    margin-left: 18%;
+    margin-left:  45%;
     margin-top: 1.5vh;
-    width: 80px;
-    height: 30px;
+    width: 120px;
+    height: 40px;
     border-radius: 3px;
     border: none;
     outline: none;
     cursor: pointer;
     background:rgb(27, 152, 255);
     color: rgb(255, 255, 255);
+    font-size: 18px;
 }
 
 #passs{
@@ -151,7 +149,25 @@ body{
     text-align: center;
     margin-top: 3vh;
 }
-</style>
+.radio{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    display: flex;
+    justify-content: space-between;
+}
+#Password{
+    width: 30%;
+}
+#ConfPass{
+    width: 30%;
+}
+#Username{
+    width: 50%;
+}
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Register</title>
+</head>
 <body>
     <div class="nav1">
         <p>Online LOR System 
@@ -164,11 +180,11 @@ body{
         <label for="check" class="checkbtn">
             <i class="fas fa-bars" id="abc"></i>
         </label>
-        <label class="logo">LOGIN</label>
+        <label class="logo">Register</label>
         <ul>
-            <li><a class="active" href="/">HOME</a></li>
+            <li><a class="active" href="TeacherResponsive.html">HOME</a></li>
            
-            <li><a href="/aboutus">AboutUs</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
     </nav>
     <div class="line">
@@ -176,22 +192,44 @@ body{
     </div>
 
     <div class="container">
-        <form action="/login" method="post">
-            <h1>Login</h1>
+        <form action="/registeradmin" method="post">
+            <h1>Register</h1>
             <div class="grp">
-                <label for="">Username</label>
-                <input type="text" class="inputs" name="username" required id="Username">
+                <label for="">Full Name:</label>
+                <input type="text" name="Name" class="inputs" required id="FullName">    
             </div>
             <div class="grp">
-                <label for="">Password</label>
-                <input type="password" class="inputs" name="password" required id="Pass">
+                <label for="" >Branch:</label>
+                <input type="text"  name="branch" class="inputs" required id="Branch">
             </div>
-            <input type="submit" class="btn" value="Login">
-            <input type="submit" class="btn" id="passs" value="Forgot Password">
-            <div class="register">
-                <a href="/register">New user? Register..</a>
+            <div class="grp">
+                <label for="" >Email:</label>
+                <input type="email"  name="email" class="inputs" required id="Email">
+            </div>
+            <div class="grp">
+                <label for="" >DOB:</label>
+                <input type="date"  name="dob" class="inputs" required id="DOB">
+            </div>
+            <div class="grp">
+                <label for="" >Phone No:</label>
+                <input type="number" name="phone" class="inputs" required id="Phone No">
+            </div>
+            <div class="grp">
+                <label for="" >Username:</label>
+                <input type="text"  name="username" class="inputs" required id="Username">
+            </div>
+            <div class="grp">
+                <label for="" >Password:</label>
+                <input type="password"  name="password" class="inputs" required id="Password">
+            
+                <label for="" >Confirm Password:</label>
+                <input type="password"  name="cpassword" class="inputs" required id="ConfPass">
             </div>
             
+            <div class="register">
+                <a href="/login">Already a User? Login..</a>
+            </div>
+            <input type="submit" class="btn" value="Register">
         </form>
     </div>
 </body>
